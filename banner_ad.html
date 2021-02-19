@@ -1,0 +1,275 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>GSAP Banner Ad</title>
+		<style type="text/css">
+      @import url(https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap);
+			@import url(http://fonts.googleapis.com/css?family=Open+Sans:800);
+			body {
+        font-family: helvetica;
+        display: flex ;
+        flex-direction: column;
+        align-items: center;
+        
+      }
+      .adMain {
+        height: 600px;
+        width: 300px;
+        overflow: hidden;
+				position: relative; 
+				opacity: 1;
+      }
+      .city-background {
+        height: 600px;
+        width: 300px;
+        z-index: -2;
+        bottom: 0px;
+        background-image: url(background.jpg);
+        background-size: cover;
+        position: relative;
+      }
+      .title {
+        position: absolute;
+        font-size: 30px;
+        top: 10px;
+        left: 20px;
+        font-family: 'Arvo', serif;
+        text-shadow: 2px 2px 2px #a29e9e;
+      }
+      .description {
+        opacity: 0;
+        position: absolute;
+        font-size: 40px;
+        width: 160px;
+        top: 250px;
+        left: 20px;
+        font-family: 'Arvo', serif;
+        text-shadow: 2px 2px 2px #a29e9e;
+      }
+      .marker {
+          content: "";
+          position: absolute;
+          width: 50px;
+          height: 50px;
+          background: url(marker.svg);
+          background-repeat: no-repeat;
+        }
+
+      #marker1 {
+        right: 30px;
+        top: 170px;
+      }
+
+      #marker2 {
+        left: 30px;
+        top: 320px;
+      }
+
+      #marker3 {
+        right: 31px;
+        bottom: 100px;
+      }
+
+      .star {
+        z-index: -1;
+        opacity: 0;
+        content: "";
+        position: absolute;
+        top: 220px;
+        right: 75px;
+        width: 75px;
+        height: 75px;
+        background: url(star.svg);
+        background-repeat: no-repeat;
+      }
+    
+      .chatMain { 
+        background-color: black;
+				width: 300px; height: 600px; 
+				position: absolute; 
+				overflow: hidden; 
+				opacity: 0;
+				}
+
+      .chat {
+        width: 300px;
+        border: solid 1px #EEE;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .messages {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .message {
+        border-radius: 20px;
+        padding: 8px 15px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        display: inline-block;
+      }
+
+      .yours {
+        align-items: flex-start;
+      }
+
+      .yours .message {
+        margin-right: 25%;
+        background-color: #eee;
+        position: relative;
+      }
+
+      .yours .message.last:before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        bottom: 0;
+        left: -7px;
+        height: 20px;
+        width: 20px;
+        background: #eee;
+        border-bottom-right-radius: 15px;
+      }
+      .yours .message.last:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        left: -10px;
+        width: 10px;
+        height: 20px;
+        background: white;
+        border-bottom-right-radius: 10px;
+      }
+
+      .mine {
+        align-items: flex-end;
+      }
+
+      .mine .message {
+        color: white;
+        margin-left: 25%;
+        background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+        background-attachment: fixed;
+        position: relative;
+      }
+
+      .mine .message.last:before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        bottom: 0;
+        right: -8px;
+        height: 20px;
+        width: 20px;
+        background: linear-gradient(to bottom, #00D0EA 0%, #0085D1 100%);
+        background-attachment: fixed;
+        border-bottom-left-radius: 15px;
+      }
+
+      .mine .message.last:after {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        right: -10px;
+        width: 10px;
+        height: 20px;
+        background: white;
+        border-bottom-left-radius: 10px;
+      }
+   
+
+
+		</style>
+	</head>
+	<body>
+    <div class="adMain">
+      <div class="chat chatMain"> 
+        <div class="yours messages">
+          <div class="message" id="msg01">
+            Hey, where are the three of us meeting tonight?
+          </div>
+          <div class="message last" id="msg02"> 
+            Don't tell me I have to come all the way to Brooklyn 😭
+          </div>
+        </div>
+        <div class="mine messages" >
+          <div class="message" id="msg03">
+            No! I know an app that can help! 😁
+          </div>
+          <div class="message" id="msg04">
+            It tells us the middle of our locations and helps us find a bar.
+          </div>
+          <div class="message last" id="msg05">
+            It's called MeetInTheMiddle 😎
+          </div>
+        </div>
+        <div class="yours messages">
+          <div class="message last" id="msg06"> 
+            🤯🤯🤯🤯🤯🤯
+          </div>
+        </div>
+        <div class="mine messages">
+          <div class="message last" id="msg07"> 
+            🍺🍸🍷🍺🍸🍷😁😁😁
+          </div>
+        </div>
+    
+      </div>
+      <div class="city-background">
+        <div class="title">
+          Meet<br>
+          In<br>
+          The<br> 
+          Middle
+        </div>
+        <div class="description" >
+          Find your<br> 
+          next meetup<br>
+          spot!</div>
+          <div class="marker" id="marker1"></div>
+          <div class="marker" id="marker2"></div>
+          <div class="marker" id="marker3"></div>
+          <div class="star"></div>
+      </div>
+    </div>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+   		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TimelineMax.min.js"></script>
+
+		<script type="text/javascript">
+			(function(){
+				var tl1 = new TimelineMax({});
+
+				
+				tl1.to('.chatMain', 0, { opacity: 1 })
+				.from('#msg01', 1.3, { left: -400, ease: Power2.easeOut })
+        .from('#msg02', 1.5, { left: -400, ease: Power2.easeOut })
+        .from('#msg03', 1.5, { right  : -400, ease: Power2.easeOut })
+        .from('#msg04', 1.5, { right  : -400, ease: Power2.easeOut })
+        .from('#msg05', 2, { right  : -400, ease: Power2.easeOut })
+        .from('#msg06', 1.2, { left  : -400, ease: Power2.easeOut })
+        .from('#msg07', 1.3, { right  : -400, ease: Power2.easeOut })
+        .to('.chatMain', 1.5, { opacity: 0 })
+        .from('#marker1', .5, { top: -100, ease: Power2.bounce })
+        .from('#marker2', .5, { top: -100, ease: Power2.bounce })
+        .from('#marker3', .5, { top: -100, ease: Power2.bounce })
+        .to('#marker1', .6, { top: 230, right: 80, ease: Power2.easeOut })
+        .to('#marker3', .6, { top: 235, right: 75, ease: Power2.easeOut })
+        .to('#marker2', .6, { top: 235, left: 180, ease: Power2.easeOut })
+        .to('.star', .8, { opacity: 1 })
+        .to('.description', 1.3, { opacity: 1 })
+        .to('.adMain', 8, { opacity: 0 });
+
+        tl1.repeat(-1)
+
+
+			}())
+		</script>
+	</body>
+</html>
